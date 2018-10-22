@@ -1,0 +1,29 @@
+… Ou crie um novo repositório na linha de comando
+echo "# teste" >> README.md 
+git init 
+git add .
+git commit -m "primeiro commit" 
+git remoto add origin https://github.com/eosantos/teste.git
+git push -u origin master
+
+… Ou empurrar um repositório existente a partir da linha de comando
+git remote add origin https://github.com/eosantos/teste.git
+git push -u origin master
+
+… Ou importar código de outro repositório
+Você pode inicializar este repositório com código de um projeto do Subversion, Mercurial ou TFS.
+
+... Após Estar no git, toda vez que alterar o projeto fazer estes processos.
+
+git status
+
+
+
+git add .
+
+
+git commit -m "primeiro commit" 
+
+git pull (Para saber se algum outro usuário mexeu no projeto)
+
+git push

@@ -1,71 +1,67 @@
 var titulo = document.querySelector(".titulo"); // Selecionando Título por class
-titulo.textContent = "Nitrução Zica"; // Imprimindo novo nome do Título
+titulo.textContent = "NUTRIÇÃO ZICA";  // Imprimindo novo nome do Título
 
-var Ntabela = document.querySelector(".nome-tabela"); // Selecionando H2 nome tabela por class
-Ntabela.textContent = "Tabela de Pacientes"; // Imprimindo novo nome da tabela
+var pacientes = document.querySelectorAll(".paciente"); // Selecionando todos pacientes
 
-//var paciente = document.querySelector("#primeiro-paciente")  // Selecionando primeiro paciente
-
-    var pacientes = document.querySelectorAll(".paciente") // Selecionando todos pacientes
-
-for (var i = 0; i < pacientes.length ; i++){
+for (var i = 0; i < pacientes.length; i++) {
 
     var paciente = pacientes[i];
-    
-    var tdpeso = paciente.querySelector(".info-peso"); //Selecionando Peso
-    peso = tdpeso.textContent;
 
-    var tdaltura = paciente.querySelector(".info-altura"); //Selecionando Altura
-    altura = tdaltura.textContent;
+    var tdPeso = paciente.querySelector(".info-peso"); //Selecionando Peso
+    var peso = tdPeso.textContent;
 
+    var tdAltura = paciente.querySelector(".info-altura"); //Selecionando Altura
+    var altura = tdAltura.textContent;
 
-    var tdimc = paciente.querySelector(".info-imc"); //Selecionando imc
+    var tdImc = paciente.querySelector(".info-imc"); //Selecionando imc
 
-    var pesoEhvalido = validaPeso(peso); //Validando Peso
-    var alturaEhvalido = validaAltura(altura); //Validando Altura
+    var pesoEhValido = validaPeso(peso);
+    var alturaEhValida = validaAltura(altura);
 
-
-    if (!pesoEhvalido) { // Se peso for menor que 0 ou Maior que 300 = ERRO | VALIDAÇÃO
-        console.log("Peso Inválido!")
-        pesoEhvalido = false;
-        tdimc.textContent = "Peso Inválido!";
+    // Se peso for menor que 0 ou Maior que 300 = ERRO | VALIDAÇÃO
+    if (!pesoEhValido) {
+        console.log("Peso inválido!");
+        pesoEhValido = false;
+        tdImc.textContent = "Peso inválido";
         paciente.classList.add("paciente-invalido");
     }
 
-    if (!alturaEhvalido) { // Se altura for menor que 0 ou Maior que 3 = ERRO | VALIDAÇÃO
-        console.log("Altura Inválido!")
-        alturaEhvalido = false;
-        tdimc.textContent = "Altura Inválido!";
+    // Se altura for menor que 0 ou Maior que 3 = ERRO | VALIDAÇÃO
+    if (!alturaEhValida) {
+        console.log("Altura inválida!");
+        alturaEhValida = false;
+        tdImc.textContent = "Altura inválida";
         paciente.classList.add("paciente-invalido");
     }
-    if (alturaEhvalido && pesoEhvalido) { // Se peso e altura forem válidos, calcula IMC | VALIDAÇÃO
-        var imc = calculaImc(peso,altura);
-        tdimc.textContent = imc;
-    }
 
-}
-
-function validaPeso(peso){
-    if(peso >= 0 && peso < 1000){
-        return true;
-    }else{
-        return false;
+    // Se peso e altura forem válidos, calcula IMC | VALIDAÇÃO
+    if (pesoEhValido && alturaEhValida) {
+        var imc = calculaImc(peso, altura);
+        tdImc.textContent = imc;
     }
 }
 
-function validaAltura(altura){
-    if(altura >=0 && altura <=3.0){
-        return true;
-    }else{
-        return false;
-    }
-}
-
-function calculaImc(peso, altura){
+function calculaImc(peso, altura) {
     var imc = 0;
-
     imc = peso / (altura * altura);
 
     return imc.toFixed(2);
 }
 
+function validaPeso(peso) {
+
+    if (peso >= 0 && peso <= 1000) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function validaAltura(altura) {
+
+    if (altura >= 0 && altura <= 3.00) {
+        return true;
+    } else {
+        return false;
+    }
+}
